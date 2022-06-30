@@ -1,0 +1,36 @@
+general:
+  buildTool: 'maven'
+  productiveBranch: 'main'
+  pipelineOptimization: true
+  repository: 'java_maven-1'
+  owner: 'azure-workshop'
+  vaultBasePath: 'piper/PIPELINE-GROUP-2154'
+  vaultPipelineName: 'PIPELINE-13341'
+  vaultServerUrl: 'https://vault.tools.sap'
+  vaultNamespace: 'ies/hyperspace/pipelines'
+  nativeBuild: true
+stages:
+  Central Build:
+  Security:
+    fortifyExecuteScan: true
+steps:
+  artifactPrepareVersion:
+    gitHttpsCredentialVaultSecretName: 'github'
+  sapCallStagingService:
+    url: 'https://staging.repositories.cloud.sap/stage/api'
+    profile: 'group-2154-default'
+  sonarExecuteScan:
+    serverUrl: 'https://sonar.tools.sap'
+  fortifyExecuteScan:
+    buildTool: 'maven'
+    serverUrl: 'https://fortify.tools.sap/ssc'
+    src: ['**/*.xml', '**/src/main/java/**/*', '**/src/main/resources/**']
+    exclude: ['**/target/**/*', '**/unit-tests/**/*', '**/integration-tests/**/*', '**/performance-tests/**/*', '**/src/test/**/*', '**/s4hana_pipeline/**/*']
+    autoCreate: true
+    projectName: 'vaibhav-java-maven-1'
+  detectExecuteScan:
+    projectName: 'vaibhav-java-maven-1'
+    groups:
+    - 'vaibhav-java-maven-1'
+  sapCumulusUpload:
+    pipelineId: 'bde50157-f711-4c3e-8b0c-512cab53f592'
