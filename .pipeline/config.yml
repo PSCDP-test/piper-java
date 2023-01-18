@@ -2,13 +2,14 @@ general:
   buildTool: 'maven'
   productiveBranch: 'main'
   pipelineOptimization: true
-  repository: 'java_maven-1'
-  owner: 'azure-workshop'
-  vaultBasePath: 'piper/PIPELINE-GROUP-2154'
-  vaultPipelineName: 'PIPELINE-13341'
-  vaultServerUrl: 'https://vault.tools.sap'
-  vaultNamespace: 'ies/hyperspace/pipelines'
+  repository: 'piper-java'
+  owner: 'PSCDP-test'
   nativeBuild: true
+#   vaultBasePath: 'piper/PIPELINE-GROUP-2154'
+#   vaultPipelineName: 'PIPELINE-13341'
+#   vaultServerUrl: 'https://vault.tools.sap'
+#   vaultNamespace: 'ies/hyperspace/pipelines'
+  
 stages:
   Central Build:
   Security:
