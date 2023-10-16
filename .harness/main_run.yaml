@@ -1,0 +1,15 @@
+inputSet:
+  pipeline:
+    identifier: Build_piper_java_1697438217689
+    properties:
+      ci:
+        codebase:
+          build:
+            spec:
+              branch: main
+            type: branch
+    object Object: properties.ci.codebase
+  name: main run
+  identifier: main_run
+  orgIdentifier: default
+  projectIdentifier: default_project
